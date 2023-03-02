@@ -1,0 +1,269 @@
+[
+    {
+        "type": 1,
+        "title": "Sonarr",
+        "name": "sonarr",
+        "description": "Sonarr is a PVR for usenet and bittorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.",
+        "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/sonarr-icon.png",
+        "image": "lscr.io/linuxserver/sonarr:develop",
+        "categories": [
+            "Downloaders",
+            "Video"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "network_mode": "host",
+        "volumes": [
+            {
+                "container": "/config",
+                "bind": "/home/chris/.config/Sonarr_v4"
+            },
+            {
+                "container": "/home/chris",
+                "bind": "/home/chris"
+            }
+        ],
+        "env": [
+            {
+                "name": "SONARR_BRANCH",
+                "label": "SONARR_BRANCH",
+                "default": "develop"
+            },
+            {
+                "name": "PGID",
+                "label": "PGID",
+                "default": "1000"
+            },
+            {
+                "name": "PUID",
+                "label": "PUID",
+                "default": "1000"
+            },
+            {
+                "name": "TZ",
+                "label": "TimeZone",
+                "default": "Europe/Berlin"
+            }
+        ]
+    },
+    {
+        "type": 1,
+        "title": "crossseed/cross-seed",
+        "name": "cross-seed",
+        "description": "cross-seed",
+        "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/sonarr-icon.png",
+        "image": "crossseed/cross-seed:latest",
+        "categories": [
+            "Torrent"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "volumes": [
+            {
+                "container": "/config",
+                "bind": "/home/chris/.config/cross-seed"
+            },
+            {
+                "container": "/torrents",
+                "bind": "/home/chris/.sessions"
+            },
+            {
+                "container": "/cross-seed",
+                "bind": "/home/chris/torrents/cross-seed"
+            }
+        ],
+        "env": [
+            {
+                "name": "PGID",
+                "label": "PGID",
+                "default": "1000"
+            },
+            {
+                "name": "PUID",
+                "label": "PUID",
+                "default": "1000"
+            }
+        ]
+    },
+    {
+        "type": 1,
+        "title": "MineOS",
+        "name": "mineos",
+        "description": "MineOS is a web-management dashboard designed to simplify Minecraft management ",
+        "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/sonarr-icon.png",
+        "image": "hexparrot/mineos",
+        "categories": [
+            "Other"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "ports": [
+            {
+                "Minecraft Server": "25565:25565/tcp",
+                "WebUI": "8443:8443/tcp"
+            }
+        ],
+        "volumes": [
+            {
+                "container": "/var/games/minecraft",
+                "bind": "/home/chris/mineOS"
+            }
+        ],
+        "env": [
+            {
+                "name": "PUID",
+                "label": "PUID",
+                "default": "1000"
+            },
+            {
+                "name": "USER_NAME",
+                "label": "USER_NAME",
+                "default": "chris"
+            },
+            {
+                "name": "USER_PASSWORD",
+                "label": "USER_PASSWORD",
+                "default": "password"
+            },
+            {
+                "name": "PGID",
+                "label": "PGID",
+                "default": "1000"
+            }
+        ]
+    },
+    {
+        "type": 1,
+        "title": "Website",
+        "name": "Website",
+        "description": "A dead simple static HOMepage for your servER to keep your s ervices on hand, from a simple yaml configuration file.",
+        "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/homer.png",
+        "image": "b4bz/homer:latest",
+        "categories": [
+            "website"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "network_mode": "host",
+        "volumes": [
+            {
+                "container": "/www/assets",
+                "bind": "/home/chris/.config/Homer/assets"
+            }
+        ],
+        "env": [
+            {
+                "name": "PUID",
+                "label": "PUID",
+                "default": "1000"
+            },
+            {
+                "name": "SUBFOLDER",
+                "label": "SUBFOLDER",
+                "default": "/links"
+            },
+            {
+                "name": "PORT",
+                "label": "PORT",
+                "default": "8081"
+            },
+            {
+                "name": "PGID",
+                "label": "PGID",
+                "default": "1000"
+            }
+        ]
+    },
+    {
+        "type": 1,
+        "title": "Yacht",
+        "name": "yacht",
+        "description": "Yacht, Docker Organizer",
+        "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/sonarr-icon.png",
+        "image": "selfhostedpro/yacht",
+        "categories": [
+            "website"
+        ],
+        "platform": "linux",
+        "restart_policy": "always",
+        "network_mode": "host",
+        "volumes": [
+            {
+                "container": "/var/run/docker.sock",
+                "bind": "/var/run/docker.sock"
+            },
+            {
+                "container": "/config",
+                "bind": "/home/chris/.config/yacht"
+            }
+        ],
+        "env": [
+            {
+                "name": "PUID",
+                "label": "PUID",
+                "default": "1000"
+            },
+            {
+                "name": "PGID",
+                "label": "PGID",
+                "default": "1000"
+            }
+        ]
+    },
+    {
+        "type": 1,
+        "title": "LanguageTool",
+        "name": "LanguageTool",
+        "description": "LanguageTool",
+        "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/sonarr-icon.png",
+        "image": "erikvl87/languagetool",
+        "categories": [
+            "LaTeX"
+        ],
+        "platform": "linux",
+        "restart_policy": "unless-stopped",
+        "network_mode": "bridge",
+        "volumes": [
+            {
+                "container": "/var/run/docker.sock",
+                "bind": "/var/run/docker.sock"
+            },
+            {
+                "container": "/config",
+                "bind": "/home/chris/.config/yacht"
+            }
+        ],
+        "ports": [
+            {
+                "8010:8010/tcp"
+            }
+        ],
+        "env": [
+            {
+                "name": "PUID",
+                "label": "PUID",
+                "default": "1000"
+            },
+            {
+                "name": "PGID",
+                "label": "PGID",
+                "default": "1000"
+            },
+            {
+                "name": "langtool_languageModel",
+                "label": "langtool_languageModel",
+                "default": "/ngrams"
+            },
+            {
+                "name": "Java_Xms",
+                "label": "Java_Xms",
+                "default": "512m"
+            },
+            {
+                "name": "Java_Xmx",
+                "label": "Java_Xmx",
+                "default": "1g"
+            }
+        ]
+    }
+]
