@@ -48,7 +48,7 @@
     },
     {
         "type": 1,
-        "title": "crossseed/cross-seed",
+        "title": "cross-seed",
         "name": "cross-seed",
         "description": "cross-seed",
         "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/sonarr-icon.png",
