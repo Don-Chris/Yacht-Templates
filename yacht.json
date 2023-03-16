@@ -222,19 +222,12 @@
         ],
         "platform": "linux",
         "restart_policy": "unless-stopped",
-        "network_mode": "bridge",
+        "network_mode": "host",
         "volumes": [
             {
-                "container": "/var/run/docker.sock",
-                "bind": "/var/run/docker.sock"
-            },
-            {
-                "container": "/config",
-                "bind": "/home/chris/.config/yacht"
+                "container": "/ngrams",
+                "bind": "/home/chris/.config/LanguageTool/ngrams"
             }
-        ],
-        "ports": [
-            "8010:8010/tcp"
         ],
         "env": [
             {
